@@ -26,7 +26,6 @@ export function EwasteCalculator() {
 
   const selectedDevice = DEVICES.find((d) => d.id === selectedDeviceId) || DEVICES[0];
 
-  // Cálculos dinâmicos em tempo real
   const annualWaste = (selectedDevice.massKg * quantity) / years;
   const co2Equivalent = annualWaste * CALCULATION_COEFFICIENTS.co2ePerKgEwaste;
   const recoverableGrams =
@@ -35,13 +34,11 @@ export function EwasteCalculator() {
     CALCULATION_COEFFICIENTS.recoveryEfficiency *
     1000;
   
-  // Estimativa do minério bruto poupado na natureza
   const rawOreSavedKg = annualWaste * CALCULATION_COEFFICIENTS.rawOreSavedPerKg;
 
   return (
     <section id="calculadora" className="scroll-mt-16 border-t border-lime-200/10 bg-[#050706] px-5 py-20 sm:px-10 lg:px-[8vw]">
       <div className="mx-auto max-w-5xl">
-        {/* Cabeçalho */}
         <div className="mb-4 flex items-end justify-between gap-4">
           <div>
             <p className="mb-3 flex items-center gap-2 text-[.7rem] font-extrabold tracking-[.14em] text-[#7ef6bc]">
@@ -62,18 +59,12 @@ export function EwasteCalculator() {
           </button>
         </div>
 
-        {/* Parágrafo Introdutório */}
         <p className="mb-8 max-w-2xl text-sm leading-relaxed text-[#b0c0b6]">
-          Selecione abaixo os dispositivos que você utiliza para calcular uma estimativa da sua geração de resíduos, pegada ambiental e o potencial de reciclagem e reuso desses materiais na indústria.
+          Selecione abaixo os dispositivos que você utiliza para calcular uma estimativa anual da sua geração de resíduos, pegada ambiental e o potencial de reciclagem e reuso desses materiais na indústria.
         </p>
 
-        {/* Interface em 2 Colunas */}
         <div className="grid gap-8 rounded-3xl border border-white/10 bg-black/40 p-6 sm:p-8 lg:grid-cols-12">
-          
-          {/* Coluna 1: Entradas da Calculadora */}
           <div className="space-y-6 lg:col-span-7">
-            
-            {/* 1. Escolha do Aparelho com Ícones do Icons8 */}
             <div>
               <label className="mb-3 block text-xs font-bold tracking-wider text-[#7ef6bc] uppercase">
                 1. Selecione o aparelho
@@ -106,7 +97,6 @@ export function EwasteCalculator() {
               </div>
             </div>
 
-            {/* 2. Quantidade */}
             <div>
               <label className="mb-3 block text-xs font-bold tracking-wider text-[#7ef6bc] uppercase">
                 2. Quantos aparelhos deste tipo você costuma ter/trocar?
@@ -132,7 +122,6 @@ export function EwasteCalculator() {
               </div>
             </div>
 
-            {/* 3. Tempo de Troca */}
             <div>
               <label className="mb-3 block text-xs font-bold tracking-wider text-[#7ef6bc] uppercase">
                 3. Com qual frequência você costuma trocar?
@@ -157,17 +146,14 @@ export function EwasteCalculator() {
                 })}
               </div>
             </div>
-
           </div>
 
-          {/* Coluna 2: Resultado Explicativo e Ação de Economia Circular */}
           <div className="flex flex-col justify-between rounded-2xl border border-lime-200/20 bg-[linear-gradient(135deg,rgba(197,255,91,.08),rgba(0,0,0,.4))] p-6 lg:col-span-5">
             <div>
               <span className="rounded-full bg-[#c5ff5b]/20 px-3 py-1 text-[0.65rem] font-black uppercase tracking-wider text-[#c5ff5b]">
                 O seu resultado
               </span>
               
-              {/* Resumo em Texto Amigável */}
               <div className="mt-4 space-y-4">
                 <p className="text-xs leading-relaxed text-[#d8e2dc]">
                   Mantendo <strong className="text-white">{quantity} {selectedDevice.label}(s)</strong> por cerca de <strong className="text-white">{years === 1 ? "1 ano" : `${years} anos`}</strong>, sua estimativa de descarte é:
@@ -189,7 +175,6 @@ export function EwasteCalculator() {
                   </p>
                 </div>
 
-                {/* Card de Reintrodução / Logística Reversa (Inspirado na matéria da EBC) */}
                 <div className="rounded-xl border border-[#c5ff5b]/30 bg-[#c5ff5b]/10 p-3.5 text-xs leading-relaxed text-[#d8e2dc]">
                   <p className="font-bold text-[#c5ff5b] mb-1">🔄 Reintrodução no Mercado (Logística Reversa):</p>
                   <p>
@@ -198,13 +183,10 @@ export function EwasteCalculator() {
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
 
-      {/* Modal de Explicação Metodológica */}
       {infoOpen && (
         <div
           className="fixed inset-0 z-50 grid place-items-center bg-black/80 p-5 backdrop-blur-sm"
@@ -217,7 +199,7 @@ export function EwasteCalculator() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-[.68rem] font-extrabold tracking-[.14em] text-[#7ef6bc]">TRANSPARÊNCIA METODOLÓGICA</p>
-                <h3 className="mt-2 text-2xl font-bold text-white">Como esta conta é feita?</h3>
+                <h3 className="mt-2 text-2xl font-bold text-white">Demonstração e Fórmulas do Cálculo</h3>
               </div>
               <button
                 type="button"
@@ -227,16 +209,38 @@ export function EwasteCalculator() {
                 ×
               </button>
             </div>
-            <div className="mt-6 space-y-4 text-sm leading-6 text-[#bdc9c1]">
-              <p>
-                <strong className="text-white">Lógica do Cálculo:</strong> O peso médio estimado do aparelho é multiplicado pela quantidade informada e dividido pelo tempo de uso (Análise de Fluxo de Massa).
-              </p>
-              <p>
-                <strong className="text-white">Logística Reversa & Economia Circular:</strong> O fator de minério bruto evitado baseia-se em estudos da EBC/Agência Gov e relatórios internacionais da UNITAR, demonstrando que a recuperação de metais em e-waste reduz drasticamente a necessidade de extração minerária primária.
-              </p>
+            
+            <div className="mt-6 space-y-5 text-sm leading-6 text-[#bdc9c1]">
               <div>
-                <strong className="text-white">Fontes e Referências:</strong>
-                <ul className="mt-2 list-disc space-y-1 pl-5">
+                <strong className="text-white block mb-1">1. Fórmula da Análise de Fluxo de Massa (MFA):</strong>
+                <p className="rounded-xl border border-white/10 bg-black/50 p-3 font-mono text-xs text-[#c5ff5b]">
+                  Lixo Eletrônico Anual (kg/ano) = (Massa Média do Aparelho × Quantidade) ÷ Anos de Uso
+                </p>
+              </div>
+
+              <div>
+                <strong className="text-white block mb-1">2. Exemplo Prático com Números Reais:</strong>
+                <div className="rounded-xl border border-lime-200/20 bg-lime-200/[0.03] p-4 text-xs space-y-2 text-[#d8e2dc]">
+                  <p>• <strong>Entrada:</strong> 1 Smartphone (peso médio global de 0,18 kg) trocado a cada 2 anos.</p>
+                  <p>• <strong>Cálculo do Lixo:</strong> (0,18 kg × 1) ÷ 2 anos = <strong>0,09 kg/ano</strong> de e-waste gerado.</p>
+                  <p>• <strong>Pegada de Poluição:</strong> 0,09 kg × 1,8 factor CO₂ = <strong>0,16 kg de CO₂e</strong> associados.</p>
+                  <p>• <strong>Minério Salvo:</strong> 0,09 kg × 15 = <strong>1,35 kg de minério bruto preservado</strong> na natureza se reciclado.</p>
+                </div>
+              </div>
+
+              <div>
+                <strong className="text-white block mb-1">3. Parâmetros e Pesos Padrões Utilizados:</strong>
+                <ul className="list-disc space-y-1 pl-5 text-xs">
+                  <li><strong>Smartphone:</strong> 0,18 kg | <strong>Notebook/PC:</strong> 2,00 kg</li>
+                  <li><strong>TV/Monitor:</strong> 7,00 kg | <strong>Acessórios:</strong> 0,10 kg</li>
+                  <li><strong>Fator CO₂e:</strong> 1,8 kg CO₂ por kg de resíduo (Ciclo de Vida E-waste)</li>
+                  <li><strong>Minério Bruto Evitado:</strong> 15 kg por kg reciclado (Estudos EBC/UNITAR)</li>
+                </ul>
+              </div>
+
+              <div className="border-t border-white/10 pt-3">
+                <strong className="text-white block mb-1">Fontes e Referências:</strong>
+                <ul className="list-disc space-y-1 pl-5 text-xs text-[#8ea096]">
                   {CALCULATION_REFERENCES.map((ref, idx) => (
                     <li key={idx}>{ref}</li>
                   ))}

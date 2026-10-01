@@ -6,7 +6,7 @@ const links = [
   { href: "#inicio", label: "Início" },
   { href: "#impactos", label: "Impactos" },
   { href: "#calculadora", label: "Calculadora" },
-  { href: "#descarte", label: "Descarte" },
+  { href: "#quiz", label: "Quiz" },
 ];
 
 export function Header() {

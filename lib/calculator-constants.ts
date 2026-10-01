@@ -49,12 +49,11 @@ export const CALCULATION_COEFFICIENTS = {
   co2ePerKgEwaste: 1.8,
   recoverableMaterialRate: 0.2,
   recoveryEfficiency: 0.85,
-  // Para cada 1 kg de e-waste reciclado, evita-se a extração de ~15 kg de minério bruto do solo
   rawOreSavedPerKg: 15,
 };
 
 export const CALCULATION_REFERENCES = [
+  "UNITAR. The Global E-waste Monitor 2024. Genebra: United Nations Institute for Training and Research, 2024.",
   "AGÊNCIA GOV. Logística reversa: entenda como funciona o reaproveitamento de equipamentos eletrônicos. Brasília: EBC, 2026.",
-  "UNITAR. The Global E-waste Monitor 2024. Genebra: UNITAR, 2024.",
-  "BRASIL. Decreto nº 10.240, de 12 de fevereiro de 2020 (Logística Reversa de REEE).",
+  "BRASIL. Decreto nº 10.240, de 12 de fevereiro de 2020. Logística Reversa de Produtos Eletroeletrônicos. Brasília, 2020.",
 ];
