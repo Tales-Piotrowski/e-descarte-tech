@@ -7,6 +7,9 @@ const links = [
   { href: "#impactos", label: "Impactos" },
   { href: "#calculadora", label: "Calculadora" },
   { href: "#quiz", label: "Quiz" },
+  { href: "#triagem", label: "Jogo de triagem" },
+  { href: "#quem somos", label: "Quem somos" },
+
 ];
 
 export function Header() {

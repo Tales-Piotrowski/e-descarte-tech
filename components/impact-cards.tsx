@@ -84,27 +84,27 @@ const IMPACT_TOPICS: ImpactTopic[] = [
   },
   {
     id: "classificacao",
-    title: "4. Classificação dos Resíduos (Linhas do REEE)",
-    subtitle: "Como Mapear e Separar o Lixo Eletrônico",
+    title: "4. Classificação dos Resíduos (As 4 Linhas de REEE)",
+    subtitle: "Guia Oficial de Separação do Lixo Eletrônico",
     badge: "Guia de Triagem",
     iconUrl: "https://img.icons8.com/color/96/sorting-options.png",
-    source: "Fonte: Decreto nº 10.240/2020 & Entidades Gestoras (ABREE/Green Eletron)",
+    source: "Fonte: Decreto nº 10.240/2020, Recicla Sampa & ABREE",
     sections: [
       {
-        heading: "🟢 Linha Verde (Informática e Telecomunicações)",
-        text: "Compreende smartphones, celulares, tablets, notebooks, computadores desktop, monitores LCD, impressoras, teclados, mouses, roteadores e cabos. Possuem alto teor de placas de circuito e metais nobres.",
+        heading: "🟢 Linha Verde (Tecnologia, Informática e Comunicação)",
+        text: "Inclui smartphones, celulares, notebooks, computadores, tablets, monitores LCD, impressoras, mouses, teclados, roteadores, cabos e carregadores. São caracterizados pela alta presença de placas de circuito impresso com metais preciosos.",
       },
       {
         heading: "🔵 Linha Azul (Eletroportáteis de Pequeno Porte)",
-        text: "Inclui liquidificadores, batedeiras, ferros de passar, secadores de cabelo, aspiradores de pó, cafeteiras, torradeiras e ferramentas elétricas portáteis.",
+        text: "Compreende aparelhos eletroportáteis domésticos de pequeno porte, como liquidificadores, ferros de passar, secadores de cabelo, batedeiras, aspiradores de pó, cafeteiras, torradeiras e ferramentas elétricas.",
       },
       {
         heading: "🟤 Linha Marrom (Equipamentos de Áudio e Vídeo)",
-        text: "Abrange televisores (CRT, LED e Plasma), aparelhos de som, home theaters, câmeras fotográficas, gravadores, DVDs e caixas de som.",
+        text: "Engloba eletrônicos de entretenimento doméstico: televisores (CRT, LED e Plasma), aparelhos de som, caixas acústicas, home theaters, câmeras fotográficas, DVDs e filmadoras.",
       },
       {
         heading: "⚪ Linha Branca (Grandes Eletrodomésticos)",
-        text: "Formada por geladeiras, congeladores, máquinas de lavar roupa, lava-louças, fogões, micro-ondas e aparelhos de ar-condicionado.",
+        text: "Formada pelos grandes equipamentos da casa, como geladeiras, refrigeradores, máquinas de lavar roupa, lava-louças, fogões, micro-ondas e aparelhos de ar-condicionado. Têm alto volume de aço, alumínio e cobre.",
       },
     ],
   },

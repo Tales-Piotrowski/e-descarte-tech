@@ -1,10 +1,20 @@
-export type DeviceId = "smartphone" | "notebook" | "tv_monitor" | "accessories";
+export type DeviceId =
+  | "smartphone"
+  | "notebook"
+  | "tv_monitor"
+  | "console"
+  | "printer"
+  | "tablet"
+  | "wearables"
+  | "small_appliance"
+  | "accessories";
 
 export type Device = {
   id: DeviceId;
   label: string;
   massKg: number;
   iconUrl: string;
+  iconEmoji?: string;
   description: string;
 };
 
@@ -21,7 +31,7 @@ export const DEVICES: Device[] = [
     label: "Notebook / PC",
     massKg: 2.0,
     iconUrl: "https://img.icons8.com/color/96/laptop.png",
-    description: "Computadores portáteis ou de mesa",
+    description: "Computadores portáteis ou desktops",
   },
   {
     id: "tv_monitor",
@@ -31,11 +41,49 @@ export const DEVICES: Device[] = [
     description: "Telas, monitores e televisores",
   },
   {
+    id: "console",
+    label: "Console / Videogame",
+    massKg: 3.5,
+    iconUrl: "https://img.icons8.com/color/96/controller.png",
+    description: "Consoles de videogame e aparelhos de jogos",
+  },
+  {
+    id: "printer",
+    label: "Impressora",
+    massKg: 6.0,
+    iconUrl: "https://img.icons8.com/color/96/printer.png",
+    iconEmoji: "🖨️",
+    description: "Impressoras jato de tinta ou laser",
+  },
+  {
+    id: "tablet",
+    label: "Tablet",
+    massKg: 0.5,
+    iconUrl: "https://img.icons8.com/color/96/tablet.png",
+    iconEmoji: "📱",
+    description: "Tablets e leitores digitais",
+  },
+  {
+    id: "small_appliance",
+    label: "Eletroportátil",
+    massKg: 2.5,
+    iconUrl: "https://img.icons8.com/color/96/blender.png",
+    description: "Cafeteiras, liquidificadores e batedeiras",
+  },
+  {
+    id: "wearables",
+    label: "Wearables / Fones",
+    massKg: 0.05,
+    iconUrl: "https://img.icons8.com/color/96/airpods.png",
+    iconEmoji: "🎧",
+    description: "Fones TWS, smartwatches e pulseiras digitais",
+  },
+  {
     id: "accessories",
-    label: "Acessórios",
+    label: "Cabos e Carregadores",
     massKg: 0.1,
     iconUrl: "https://img.icons8.com/color/96/headphones.png",
-    description: "Fones de ouvido, carregadores e periféricos",
+    description: "Cabos, fontes, periféricos e adaptadores",
   },
 ];
 

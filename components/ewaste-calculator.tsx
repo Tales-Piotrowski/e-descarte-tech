@@ -83,13 +83,22 @@ export function EwasteCalculator() {
                           : "border-white/10 bg-white/[0.02] text-[#8ea096] hover:border-white/20 hover:text-white"
                       }`}
                     >
-                      <img
-                        src={device.iconUrl}
-                        alt={device.label}
-                        width={40}
-                        height={40}
-                        className="size-10 object-contain"
-                      />
+                      {device.iconEmoji ? (
+                        <span
+                          aria-label={device.label}
+                          className="grid size-10 place-items-center text-2xl leading-none"
+                        >
+                          {device.iconEmoji}
+                        </span>
+                      ) : (
+                        <img
+                          src={device.iconUrl}
+                          alt={device.label}
+                          width={40}
+                          height={40}
+                          className="size-10 object-contain"
+                        />
+                      )}
                       <span className="mt-2 text-xs font-bold text-center">{device.label}</span>
                     </button>
                   );

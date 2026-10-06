@@ -1,7 +1,9 @@
 import { Header } from "@/components/header";
-import { EwasteCalculator } from "@/components/ewaste-calculator";
 import { ImpactCards } from "@/components/impact-cards";
+import { EwasteCalculator } from "@/components/ewaste-calculator";
 import { QuizSection } from "@/components/quiz-section";
+import { SortingGame } from "@/components/sorting-game";
+import { AboutSection } from "@/components/about-section";
 
 const statistics = [
   { value: "62 mi", label: "de toneladas de lixo eletrônico geradas no mundo em 2022" },
@@ -22,22 +24,20 @@ export default function Home() {
         </div>
 
         <div className="hero-content">
-          <p className="eyebrow">
-            <span /> EDUCAÇÃO PARA O DESCARTE CONSCIENTE
-          </p>
           <h1 id="hero-title">
-            A tecnologia não termina <em>quando você para de usar.</em>
+            Por que o descarte de eletrônicos <em>é importante?</em>
           </h1>
           
+          {/* Motivação centrada no problema prático (estilo agua.ai) */}
           <div className="my-6 max-w-2xl space-y-4 text-left text-sm leading-relaxed text-[#c3d2c9] sm:text-base">
             <p>
-              A aceleração das inovações tecnológicas transformou celulares, computadores e eletrodomésticos em itens indispensáveis na sociedade moderna. Contudo, a busca constante por modelos mais novos e a obsolescência acelerada criaram uma das correntes de resíduos que mais cresce no planeta: o <strong>Lixo Eletrônico (REEE)</strong>.
+              <strong>1. A cultura do descarte rápido:</strong> Trocamos de celular e computador em intervalos cada vez menores, mas a maioria desses aparelhos acaba esquecida no fundo de uma gaveta ou jogada diretamente na lixeira comum.
             </p>
             <p>
-              Diferente do lixo orgânico, um dispositivo eletrônico carrega uma dualidade crítica: por um lado, possui substâncias tóxicas perigosas que contaminam o solo e a água; por outro, guarda elementos nobres como ouro, prata e cobre de altíssimo valor para a indústria.
+              <strong>2. O perigo invisível:</strong> Quando um eletrônico vai para o lixo comum, seus componentes tóxicos vazam e contaminam a água e o solo. O Brasil é o maior gerador de lixo eletrônico da América Latina, e menos de 3% é reciclado de forma correta.
             </p>
-            <p className="font-medium text-white">
-              A plataforma <strong>E-Descarte.tech</strong> foi criada para guiar você nessa jornada de conscientização. Aqui você entenderá os riscos ambientais, calculará o impacto anual do seu consumo e aprenderá como a reciclagem e a logística reversa transformam descartes em novos recursos.
+            <p>
+              <strong>3. Recursos jogados fora:</strong> Placas de circuito contêm mais ouro, prata e cobre do que o próprio minério extraído da natureza. Descartar sem reciclar é desperdiçar matéria-prima nobre e destruir o meio ambiente para extrair mais.
             </p>
           </div>
 
@@ -60,6 +60,8 @@ export default function Home() {
       <ImpactCards />
       <EwasteCalculator />
       <QuizSection />
+      <SortingGame />
+      <AboutSection />
     </main>
   );
 }
