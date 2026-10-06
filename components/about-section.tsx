@@ -59,7 +59,7 @@ export function AboutSection() {
             <div className="lg:col-span-5 flex justify-center">
               <div className="w-full max-w-[280px] rounded-2xl bg-white p-6 shadow-xl flex items-center justify-center">
                 <img
-                  src="/images/ic-uff-logo.png"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/ic-uff-logo.png`}
                   alt="Instituto de Computação - UFF"
                   className="w-full h-auto object-contain max-h-[140px]"
                 />
@@ -85,7 +85,7 @@ export function AboutSection() {
             <div className="lg:col-span-5 flex justify-center">
               <div className="w-full max-w-[280px] rounded-2xl bg-[#0b1b38] p-6 shadow-xl flex items-center justify-center border border-white/10">
                 <img
-                  src="/images/recicletech-logo.png"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/recicletech-logo.png`}
                   alt="Projeto RecicleTech UFF"
                   className="w-full h-auto object-contain max-h-[140px]"
                 />
