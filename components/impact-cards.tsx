@@ -22,7 +22,7 @@ const IMPACT_TOPICS: ImpactTopic[] = [
     title: "1. O Ciclo do Consumo e o Acúmulo de Resíduos",
     subtitle: "A Problemática da Obsolescência",
     iconUrl: "https://img.icons8.com/color/96/process.png",
-    imagePath: "/images/secao1.png",
+    imagePath: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/secao1.png`,
     source: "Fonte: Global E-waste Monitor (UNITAR, 2024) & Abrelpe",
     sections: [
       {
@@ -52,7 +52,7 @@ const IMPACT_TOPICS: ImpactTopic[] = [
     title: "2. Riscos Ambientais e Metais Pesados",
     subtitle: "A Toxicidade Escondida nos Circuitos",
     emojiIcon: "☣️",
-    imagePath: "/images/secao2.png",
+    imagePath: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/secao2.png`,
     source: "Fonte: Detering et al. (2021) & Alabi et al. (2021)",
     sections: [
       {
@@ -83,7 +83,7 @@ const IMPACT_TOPICS: ImpactTopic[] = [
     subtitle: "O Valor Econômico do Reciclável",
     emojiIcon: "⛏️",
     iconUrl: "https://img.icons8.com/color/96/mobile-mining.png",
-    imagePath: "/images/secao3.png",
+    imagePath: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/secao3.png`,
     source: "Fonte: Journal of Cleaner Production (Xavier et al., 2019)",
     sections: [
       {
@@ -113,7 +113,7 @@ const IMPACT_TOPICS: ImpactTopic[] = [
     title: "4. Classificação dos Resíduos (As 4 Linhas de REEE)",
     subtitle: "Guia Teórico para o Simulador de Triagem",
     iconUrl: "https://img.icons8.com/color/96/recycle-bin.png",
-    imagePath: "/images/secao4.png",
+    imagePath: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/secao4.png`,
     source: "Fonte: Decreto nº 10.240/2020, Recicla Sampa & ABREE",
     sections: [
       {
@@ -143,7 +143,7 @@ const IMPACT_TOPICS: ImpactTopic[] = [
     title: "5. Logística Reversa e Legislação Brasileira",
     subtitle: "Entenda os Seus Direitos e Deveres",
     emojiIcon: "♻️🏛️",
-    imagePath: "/images/secao5.png",
+    imagePath: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/secao5.png`,
     source: "Fonte: Política Nacional de Resíduos Sólidos (Lei nº 12.305/2010) & Agência Gov",
     sections: [
       {
@@ -173,7 +173,7 @@ const IMPACT_TOPICS: ImpactTopic[] = [
     title: "6. Como Evitar e Ações Práticas de Prevenção",
     subtitle: "Hábitos Sustentáveis no Dia a Dia",
     iconUrl: "https://img.icons8.com/color/96/idea.png",
-    imagePath: "/images/secao6.png",
+    imagePath: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/secao6.png`,
     source: "Fonte: Recicla Sampa & Guias de TI Verde",
     sections: [
       {

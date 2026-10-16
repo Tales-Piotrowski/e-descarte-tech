@@ -34,7 +34,7 @@ export default function Home() {
           {/* Imagem do Header com moldura mais quadrada e enquadramento ajustado */}
           <div className="my-5 w-full max-w-2xl overflow-hidden rounded-xl border border-white/15 bg-white/5 p-1.5 shadow-2xl">
             <img
-              src="/images/header.png"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/header.png`}
               alt="E-Descarte Tech — Sustentabilidade e Reciclagem"
               className="aspect-[16/9] w-full rounded-lg object-cover"
             />

@@ -199,6 +199,7 @@ section[id] > * { position: relative; z-index: 1; }
   padding: clamp(8rem, 16vh, 11rem) clamp(1.25rem, 8vw, 9rem) 2rem;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   isolation: isolate;
   overflow: hidden;
   background: radial-gradient(ellipse at 66% 31%, #14251a 0%, var(--near-black) 40%, var(--black) 80%);
@@ -232,7 +233,7 @@ html[data-theme="light"] .hero h1 { text-shadow: none !important; }
 .cta:hover { transform: translateY(-3px); }
 
 /* Bloco de Estatísticas */
-.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; max-width: 62rem; margin-top: clamp(3rem, 9vh, 7rem); border: 1px solid rgba(197, 255, 91, .2); background: rgba(197, 255, 91, .17); }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; width: min(62rem, 100%); margin: clamp(3rem, 9vh, 7rem) auto 0; border: 1px solid rgba(197, 255, 91, .2); background: rgba(197, 255, 91, .17); }
 html[data-theme="light"] .stats { border-color: #cbd5e1 !important; background: #e2e8f0 !important; }
 .stat { min-height: 8.7rem; padding: 1.35rem 1.2rem; background: rgba(5, 7, 6, .74); backdrop-filter: blur(12px); }
 html[data-theme="light"] .stat { background: #ffffff !important; }
