@@ -2,7 +2,7 @@
 
 export function AboutSection() {
   return (
-    <section id="quem somos" className="scroll-mt-16 border-t border-white/10 bg-[#050706] px-5 py-24 sm:px-10 lg:px-[8vw]">
+    <section id="quem-somos" className="scroll-mt-16 border-t border-white/10 bg-[#050706] px-5 py-24 sm:px-10 lg:px-[8vw]">
       <div className="mx-auto max-w-5xl">
         
         {/* 1. Título Centralizado e Parágrafo Explicativo */}
