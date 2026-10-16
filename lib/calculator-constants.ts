@@ -82,7 +82,7 @@ export const DEVICES: Device[] = [
     id: "accessories",
     label: "Cabos e Carregadores",
     massKg: 0.1,
-    iconUrl: "https://img.icons8.com/color/96/headphones.png",
+    iconUrl: "https://img.icons8.com/color/96/mobile-charger.png",
     description: "Cabos, fontes, periféricos e adaptadores",
   },
 ];

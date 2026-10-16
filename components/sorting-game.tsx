@@ -8,7 +8,8 @@ type WasteItem = {
   id: number;
   name: string;
   category: string;
-  iconUrl: string;
+  iconUrl?: string;
+  iconEmoji?: string;
   correctLine: ItemLine;
   lineName: string;
   explanation: string;
@@ -62,27 +63,27 @@ const ITEMS_BANK: WasteItem[] = [
   },
   {
     id: 6,
-    name: "Liquidificador Quebrado",
-    category: "Eletroportátil",
-    iconUrl: "https://img.icons8.com/color/96/blender.png",
+    name: "Furadeira Elétrica",
+    category: "Ferramenta Elétrica Portátil",
+    iconUrl: "https://img.icons8.com/color/96/drill.png",
     correctLine: "azul",
     lineName: "Linha Azul",
-    explanation: "Eletroportáteis de cozinha pertencem à Linha Azul. Seus motores de cobre e componentes plásticos são amplamente recicláveis.",
+    explanation: "Ferramentas elétricas portáteis (como furadeiras e parafusadeiras) pertencem à Linha Azul juntamente com os eletroportáteis domésticos.",
   },
   {
     id: 7,
-    name: "Caixa de Som",
-    category: "Áudio",
-    iconUrl: "https://img.icons8.com/color/96/speaker.png",
+    name: "Rádio / Caixa de Som",
+    category: "Áudio e Entretenimento",
+    iconEmoji: "📻",
     correctLine: "marrom",
     lineName: "Linha Marrom",
-    explanation: "Equipamentos de som, home theaters e reprodutores de mídia pertencem à Linha Marrom.",
+    explanation: "Equipamentos de áudio, rádios, caixas de som e home theaters pertencem à Linha Marrom.",
   },
   {
     id: 8,
     name: "Máquina de Lavar",
     category: "Grande Eletrodoméstico",
-    iconUrl: "https://img.icons8.com/color/96/washer.png",
+    iconUrl: "https://img.icons8.com/color/96/washing-machine.png",
     correctLine: "branca",
     lineName: "Linha Branca",
     explanation: "Lavadoras, fogões e refrigeradores são da Linha Branca, contendo grandes estruturas de aço, alumínio e cobre.",
@@ -94,37 +95,29 @@ const LINES_CONFIG = [
     id: "verde" as ItemLine,
     title: "Linha Verde",
     subtitle: "Informática & Celulares",
-    borderColor: "border-emerald-500",
-    bgColor: "bg-emerald-500/10 hover:bg-emerald-500/20",
-    textColor: "text-emerald-400",
-    badgeColor: "bg-emerald-500/20 text-emerald-300",
+    titleColor: "text-emerald-500 font-extrabold",
+    badgeBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30",
   },
   {
     id: "azul" as ItemLine,
     title: "Linha Azul",
-    subtitle: "Eletroportáteis",
-    borderColor: "border-sky-500",
-    bgColor: "bg-sky-500/10 hover:bg-sky-500/20",
-    textColor: "text-sky-400",
-    badgeColor: "bg-sky-500/20 text-sky-300",
+    subtitle: "Eletroportáteis & Ferramentas",
+    titleColor: "text-sky-500 font-extrabold",
+    badgeBg: "bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30",
   },
   {
     id: "marrom" as ItemLine,
     title: "Linha Marrom",
-    subtitle: "Áudio, Vídeo & Telas",
-    borderColor: "border-amber-600",
-    bgColor: "bg-amber-600/10 hover:bg-amber-600/20",
-    textColor: "text-amber-400",
-    badgeColor: "bg-amber-600/20 text-amber-300",
+    subtitle: "Equipamentos de Áudio e Vídeo",
+    titleColor: "text-amber-600 dark:text-amber-400 font-extrabold",
+    badgeBg: "bg-amber-600/15 text-amber-700 dark:text-amber-300 border border-amber-600/30",
   },
   {
     id: "branca" as ItemLine,
     title: "Linha Branca",
-    subtitle: "Eletrodomésticos",
-    borderColor: "border-slate-300",
-    bgColor: "bg-slate-300/10 hover:bg-slate-300/20",
-    textColor: "text-slate-200",
-    badgeColor: "bg-slate-300/20 text-slate-100",
+    subtitle: "Grandes Eletrodomésticos",
+    titleColor: "text-slate-700 dark:text-slate-200 font-extrabold",
+    badgeBg: "bg-slate-200 dark:bg-slate-700/50 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-600",
   },
 ];
 
@@ -195,11 +188,15 @@ export function SortingGame() {
               {/* Item Sorteado */}
               <div className="flex flex-col items-center text-center py-4">
                 <div className="relative size-24 mb-4 grid place-items-center rounded-2xl border border-white/10 bg-white/5 p-4 shadow-inner">
-                  <img
-                    src={currentItem.iconUrl}
-                    alt={currentItem.name}
-                    className="size-full object-contain"
-                  />
+                  {currentItem.iconUrl ? (
+                    <img
+                      src={currentItem.iconUrl}
+                      alt={currentItem.name}
+                      className="size-full object-contain"
+                    />
+                  ) : (
+                    <span className="text-5xl leading-none">{currentItem.iconEmoji}</span>
+                  )}
                 </div>
                 <span className="text-[0.65rem] font-black uppercase tracking-wider text-[#7ef6bc]">
                   {currentItem.category}
@@ -212,18 +209,18 @@ export function SortingGame() {
                 </p>
               </div>
 
-              {/* 4 Lixeiras/Categorias em Grid */}
+              {/* 4 Lixeiras em Botões Limpos (Cor Apenas no Título/Badge) */}
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {LINES_CONFIG.map((line) => {
-                  let btnStyle = `border ${line.borderColor} ${line.bgColor} text-white`;
+                  let cardBorder = "border-white/10 hover:border-lime-400 bg-white/[0.02] hover:bg-white/[0.05]";
 
                   if (isAnswered) {
                     if (line.id === currentItem.correctLine) {
-                      btnStyle = "border-emerald-400 bg-emerald-500/30 text-emerald-100 ring-2 ring-emerald-400 font-bold";
+                      cardBorder = "border-emerald-500 bg-emerald-500/10 ring-2 ring-emerald-500/50";
                     } else if (line.id === selectedLine) {
-                      btnStyle = "border-rose-500 bg-rose-500/20 text-rose-200 opacity-80";
+                      cardBorder = "border-rose-500 bg-rose-500/10 opacity-70";
                     } else {
-                      btnStyle = "border-white/5 bg-black/20 text-[#506056] opacity-40";
+                      cardBorder = "border-white/5 bg-transparent opacity-40";
                     }
                   }
 
@@ -233,10 +230,10 @@ export function SortingGame() {
                       type="button"
                       disabled={isAnswered}
                       onClick={() => handleSelectLine(line.id)}
-                      className={`flex flex-col items-start justify-between rounded-2xl p-4 text-left transition-all ${btnStyle}`}
+                      className={`flex flex-col items-start justify-between rounded-2xl border p-4 text-left transition-all ${cardBorder}`}
                     >
                       <div>
-                        <span className={`inline-block rounded-md px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wider ${line.badgeColor}`}>
+                        <span className={`inline-block rounded-md px-2.5 py-0.5 text-[0.65rem] font-black uppercase tracking-wider ${line.badgeBg}`}>
                           {line.title}
                         </span>
                         <p className="mt-2 text-sm font-bold">{line.subtitle}</p>

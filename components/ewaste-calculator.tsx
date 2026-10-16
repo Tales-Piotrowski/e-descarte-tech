@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import {
   CALCULATION_COEFFICIENTS,
   CALCULATION_REFERENCES,
@@ -23,6 +24,11 @@ export function EwasteCalculator() {
   const [quantity, setQuantity] = useState<number>(1);
   const [years, setYears] = useState<number>(2.5);
   const [infoOpen, setInfoOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const selectedDevice = DEVICES.find((d) => d.id === selectedDeviceId) || DEVICES[0];
 
@@ -69,7 +75,7 @@ export function EwasteCalculator() {
               <label className="mb-3 block text-xs font-bold tracking-wider text-[#7ef6bc] uppercase">
                 1. Selecione o aparelho
               </label>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {DEVICES.map((device) => {
                   const isSelected = device.id === selectedDeviceId;
                   return (
@@ -77,9 +83,9 @@ export function EwasteCalculator() {
                       key={device.id}
                       type="button"
                       onClick={() => setSelectedDeviceId(device.id)}
-                      className={`flex flex-col items-center justify-center rounded-2xl border p-3 transition ${
+                      className={`flex flex-col items-center justify-center rounded-2xl border p-3 transition duration-200 ${
                         isSelected
-                          ? "border-[#c5ff5b] bg-[#c5ff5b]/10 text-white shadow-[0_0_15px_rgba(197,255,91,0.15)]"
+                          ? "scale-[1.02] border-[#c5ff5b] bg-[#c5ff5b]/10 text-white shadow-[0_0_0_2px_rgba(197,255,91,0.12),0_0_18px_rgba(197,255,91,0.22)] ring-2 ring-[#c5ff5b]/80 ring-offset-2 ring-offset-transparent"
                           : "border-white/10 bg-white/[0.02] text-[#8ea096] hover:border-white/20 hover:text-white"
                       }`}
                     >
@@ -99,7 +105,7 @@ export function EwasteCalculator() {
                           className="size-10 object-contain"
                         />
                       )}
-                      <span className="mt-2 text-xs font-bold text-center">{device.label}</span>
+                      <span className="mt-2 text-xs font-bold text-center leading-snug">{device.label}</span>
                     </button>
                   );
                 })}
@@ -196,24 +202,25 @@ export function EwasteCalculator() {
         </div>
       </div>
 
-      {infoOpen && (
+      {/* Pop-up Flutuante via React Portal para centralizar na tela toda */}
+      {infoOpen && mounted && createPortal(
         <div
-          className="fixed inset-0 z-50 grid place-items-center bg-black/80 p-5 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] grid place-items-center bg-black/80 p-5 backdrop-blur-md animate-in fade-in duration-200"
           onClick={() => setInfoOpen(false)}
         >
           <div
             className="max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-lime-200/25 bg-[#0b100d] p-6 shadow-2xl sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
               <div>
                 <p className="text-[.68rem] font-extrabold tracking-[.14em] text-[#7ef6bc]">TRANSPARÊNCIA METODOLÓGICA</p>
-                <h3 className="mt-2 text-2xl font-bold text-white">Demonstração e Fórmulas do Cálculo</h3>
+                <h3 className="mt-1 text-2xl font-bold text-white">Demonstração e Fórmulas do Cálculo</h3>
               </div>
               <button
                 type="button"
                 onClick={() => setInfoOpen(false)}
-                className="grid size-9 place-items-center rounded-full border border-white/15 text-lg text-white hover:border-[#c5ff5b]"
+                className="grid size-9 place-items-center rounded-full border border-white/20 bg-white/5 text-lg font-bold text-white transition hover:border-[#c5ff5b] hover:bg-[#c5ff5b] hover:text-[#050706]"
               >
                 ×
               </button>
@@ -228,27 +235,32 @@ export function EwasteCalculator() {
               </div>
 
               <div>
-                <strong className="text-white block mb-1">2. Exemplo Prático com Números Reais:</strong>
+                <strong className="text-white block mb-1">2. Exemplo Prático de Cálculo:</strong>
                 <div className="rounded-xl border border-lime-200/20 bg-lime-200/[0.03] p-4 text-xs space-y-2 text-[#d8e2dc]">
-                  <p>• <strong>Entrada:</strong> 1 Smartphone (peso médio global de 0,18 kg) trocado a cada 2 anos.</p>
-                  <p>• <strong>Cálculo do Lixo:</strong> (0,18 kg × 1) ÷ 2 anos = <strong>0,09 kg/ano</strong> de e-waste gerado.</p>
-                  <p>• <strong>Pegada de Poluição:</strong> 0,09 kg × 1,8 factor CO₂ = <strong>0,16 kg de CO₂e</strong> associados.</p>
-                  <p>• <strong>Minério Salvo:</strong> 0,09 kg × 15 = <strong>1,35 kg de minério bruto preservado</strong> na natureza se reciclado.</p>
+                  <p>• <strong>Entrada:</strong> 1 Smartphone (peso médio de 0,18 kg) trocado a cada 2,5 anos.</p>
+                  <p>• <strong>Cálculo do Lixo:</strong> (0,18 kg × 1) ÷ 2,5 anos = <strong>0,072 kg/ano</strong> de e-waste gerado.</p>
+                  <p>• <strong>Pegada de Poluição:</strong> 0,072 kg × 1,8 fator CO₂ = <strong>0,13 kg de CO₂e</strong> associados.</p>
+                  <p>• <strong>Minério Salvo:</strong> 0,072 kg × 15 = <strong>1,08 kg de minério bruto preservado</strong> na natureza se reciclado.</p>
                 </div>
               </div>
 
               <div>
-                <strong className="text-white block mb-1">3. Parâmetros e Pesos Padrões Utilizados:</strong>
-                <ul className="list-disc space-y-1 pl-5 text-xs">
-                  <li><strong>Smartphone:</strong> 0,18 kg | <strong>Notebook/PC:</strong> 2,00 kg</li>
-                  <li><strong>TV/Monitor:</strong> 7,00 kg | <strong>Acessórios:</strong> 0,10 kg</li>
-                  <li><strong>Fator CO₂e:</strong> 1,8 kg CO₂ por kg de resíduo (Ciclo de Vida E-waste)</li>
-                  <li><strong>Minério Bruto Evitado:</strong> 15 kg por kg reciclado (Estudos EBC/UNITAR)</li>
-                </ul>
+                <strong className="text-white block mb-1">3. Parâmetros e Pesos Médios dos 9 Dispositivos:</strong>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <p>• <strong>Smartphone / Celular:</strong> 0,18 kg</p>
+                  <p>• <strong>Notebook / PC:</strong> 2,00 kg</p>
+                  <p>• <strong>TV / Monitor:</strong> 7,00 kg</p>
+                  <p>• <strong>Tablet:</strong> 0,45 kg</p>
+                  <p>• <strong>Console de Videogame:</strong> 3,20 kg</p>
+                  <p>• <strong>Fone de Ouvido / Headset:</strong> 0,20 kg</p>
+                  <p>• <strong>Smartwatch / Relógio:</strong> 0,08 kg</p>
+                  <p>• <strong>Eletroportátil:</strong> 1,80 kg</p>
+                  <p>• <strong>Cabos e Carregadores:</strong> 0,10 kg</p>
+                </div>
               </div>
 
-              <div className="border-t border-white/10 pt-3">
-                <strong className="text-white block mb-1">Fontes e Referências:</strong>
+              <div className="border-t border-white/10 pt-4">
+                <strong className="text-white block mb-1">Fontes e Referências Acadêmicas:</strong>
                 <ul className="list-disc space-y-1 pl-5 text-xs text-[#8ea096]">
                   {CALCULATION_REFERENCES.map((ref, idx) => (
                     <li key={idx}>{ref}</li>
@@ -257,7 +269,8 @@ export function EwasteCalculator() {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );
