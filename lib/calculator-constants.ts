@@ -95,13 +95,14 @@ export const USE_PERIOD_OPTIONS = [
 
 export const CALCULATION_COEFFICIENTS = {
   co2ePerKgEwaste: 1.8,
-  recoverableMaterialRate: 0.2,
+  recoverableMaterialRate: 0.3,
   recoveryEfficiency: 0.85,
-  rawOreSavedPerKg: 15,
+  rawOreSavedPerKg: 65.2,
+  brazilFormalRecyclingRate: 0.03,
 };
 
 export const CALCULATION_REFERENCES = [
-  "UNITAR. The Global E-waste Monitor 2024. Genebra: United Nations Institute for Training and Research, 2024.",
+  "UNITAR. The Global E-waste Monitor 2024. Genebra: United Nations Institute for Training and Research, 2024. p. 12.",
   "AGÊNCIA GOV. Logística reversa: entenda como funciona o reaproveitamento de equipamentos eletrônicos. Brasília: EBC, 2026.",
   "BRASIL. Decreto nº 10.240, de 12 de fevereiro de 2020. Logística Reversa de Produtos Eletroeletrônicos. Brasília, 2020.",
 ];

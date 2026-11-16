@@ -39,8 +39,9 @@ export function EwasteCalculator() {
     CALCULATION_COEFFICIENTS.recoverableMaterialRate *
     CALCULATION_COEFFICIENTS.recoveryEfficiency *
     1000;
-  
+
   const rawOreSavedKg = annualWaste * CALCULATION_COEFFICIENTS.rawOreSavedPerKg;
+  const realBrazilOreSavedKg = rawOreSavedKg * CALCULATION_COEFFICIENTS.brazilFormalRecyclingRate;
 
   return (
     <section id="calculadora" className="scroll-mt-16 border-t border-lime-200/10 bg-[#050706] px-5 py-20 sm:px-10 lg:px-[8vw]">
@@ -166,9 +167,9 @@ export function EwasteCalculator() {
           <div className="flex flex-col justify-between rounded-2xl border border-lime-200/20 bg-[linear-gradient(135deg,rgba(197,255,91,.08),rgba(0,0,0,.4))] p-6 lg:col-span-5">
             <div>
               <span className="rounded-full bg-[#c5ff5b]/20 px-3 py-1 text-[0.65rem] font-black uppercase tracking-wider text-[#c5ff5b]">
-                O seu resultado
+                O seu resultado (100% reciclagem formal)
               </span>
-              
+
               <div className="mt-4 space-y-4">
                 <p className="text-xs leading-relaxed text-[#d8e2dc]">
                   Mantendo <strong className="text-white">{quantity} {selectedDevice.label}(s)</strong> por cerca de <strong className="text-white">{years === 1 ? "1 ano" : `${years} anos`}</strong>, sua estimativa de descarte é:
@@ -183,17 +184,17 @@ export function EwasteCalculator() {
 
                 <div className="space-y-1.5 text-xs leading-relaxed text-[#b0c0b6]">
                   <p>
-                    🌱 <strong>Emissões:</strong> Cerca de <strong className="text-white">{co2Equivalent.toFixed(1)} kg de gases poluentos</strong> na fabricação.
+                    🌱 <strong>Emissões evitadas:</strong> Cerca de <strong className="text-white">{co2Equivalent.toFixed(2)} kg de CO₂e</strong> com reciclagem formal.
                   </p>
                   <p>
-                    ♻️ <strong>Materiais:</strong> <strong className="text-white">{recoverableGrams.toFixed(0)} g de metais valiosos</strong> (como cobre e ouro) em circulação.
+                    ♻️ <strong>Materiais:</strong> <strong className="text-white">{recoverableGrams.toFixed(1)} g de metais recuperáveis</strong> (como cobre, ferro, alumínio e ouro).
                   </p>
                 </div>
 
                 <div className="rounded-xl border border-[#c5ff5b]/30 bg-[#c5ff5b]/10 p-3.5 text-xs leading-relaxed text-[#d8e2dc]">
                   <p className="font-bold text-[#c5ff5b] mb-1">🔄 Reintrodução no Mercado (Logística Reversa):</p>
                   <p>
-                    Em vez de descartar no lixo comum, encaminhar este aparelho para a reciclagem permite recuperar matéria-prima para novos produtos e poupa a natureza de extrair cerca de <strong className="text-white">{rawOreSavedKg.toFixed(1)} kg de minério bruto do solo</strong>!
+                    Encaminhando 100% para a reciclagem formal, poupa-se a extração de cerca de <strong className="text-white">{rawOreSavedKg.toFixed(1)} kg de minério bruto do solo</strong> (no cenário atual brasileiro, com ~3% de coleta formal, apenas <strong className="text-white">{realBrazilOreSavedKg.toFixed(2)} kg</strong> seriam preservados).
                   </p>
                 </div>
               </div>
@@ -225,37 +226,37 @@ export function EwasteCalculator() {
                 ×
               </button>
             </div>
-            
+
             <div className="mt-6 space-y-5 text-sm leading-6 text-[#bdc9c1]">
               <div>
-                <strong className="text-white block mb-1">1. Fórmula da Análise de Fluxo de Massa (MFA):</strong>
+                <strong className="text-white block mb-1">1. Estimativa de Geração Anual por Estoque e Tempo de Uso:</strong>
                 <p className="rounded-xl border border-white/10 bg-black/50 p-3 font-mono text-xs text-[#c5ff5b]">
                   Lixo Eletrônico Anual (kg/ano) = (Massa Média do Aparelho × Quantidade) ÷ Anos de Uso
+                </p>
+                <p className="mt-1.5 text-xs text-[#8ea096]">
+                  * Premissa: os indicadores de benefício supõem o encaminhamento de 100% do resíduo para reciclagem formal (no Brasil, a taxa real é inferior a 3%).
                 </p>
               </div>
 
               <div>
                 <strong className="text-white block mb-1">2. Exemplo Prático de Cálculo:</strong>
                 <div className="rounded-xl border border-lime-200/20 bg-lime-200/[0.03] p-4 text-xs space-y-2 text-[#d8e2dc]">
-                  <p>• <strong>Entrada:</strong> 1 Smartphone (peso médio de 0,18 kg) trocado a cada 2,5 anos.</p>
-                  <p>• <strong>Cálculo do Lixo:</strong> (0,18 kg × 1) ÷ 2,5 anos = <strong>0,072 kg/ano</strong> de e-waste gerado.</p>
-                  <p>• <strong>Pegada de Poluição:</strong> 0,072 kg × 1,8 fator CO₂ = <strong>0,13 kg de CO₂e</strong> associados.</p>
-                  <p>• <strong>Minério Salvo:</strong> 0,072 kg × 15 = <strong>1,08 kg de minério bruto preservado</strong> na natureza se reciclado.</p>
+                  <p>• <strong>Entrada:</strong> 1 Smartphone (massa média de 0,18 kg) trocado a cada 2,5 anos.</p>
+                  <p>• <strong>Lixo Gerado:</strong> (0,18 kg × 1) ÷ 2,5 anos = <strong>0,072 kg/ano</strong> de e-waste.</p>
+                  <p>• <strong>Emissões Evitadas:</strong> 0,072 kg × 1,8 = <strong>0,13 kg de CO₂e</strong> evitados.</p>
+                  <p>• <strong>Metais Recuperáveis:</strong> 0,072 kg × 0,30 × 0,85 × 1000 = <strong>18,4 g de metais</strong>.</p>
+                  <p>• <strong>Minério Preservado:</strong> 0,072 kg × 65,2 = <strong>4,69 kg de minério bruto</strong> (cenário real BR de 3%: <strong>0,14 kg</strong>).</p>
                 </div>
               </div>
 
               <div>
-                <strong className="text-white block mb-1">3. Parâmetros e Pesos Médios dos 9 Dispositivos:</strong>
+                <strong className="text-white block mb-1">3. Parâmetros e Massas Médias dos 9 Dispositivos:</strong>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                  <p>• <strong>Smartphone / Celular:</strong> 0,18 kg</p>
-                  <p>• <strong>Notebook / PC:</strong> 2,00 kg</p>
-                  <p>• <strong>TV / Monitor:</strong> 7,00 kg</p>
-                  <p>• <strong>Tablet:</strong> 0,45 kg</p>
-                  <p>• <strong>Console de Videogame:</strong> 3,20 kg</p>
-                  <p>• <strong>Fone de Ouvido / Headset:</strong> 0,20 kg</p>
-                  <p>• <strong>Smartwatch / Relógio:</strong> 0,08 kg</p>
-                  <p>• <strong>Eletroportátil:</strong> 1,80 kg</p>
-                  <p>• <strong>Cabos e Carregadores:</strong> 0,10 kg</p>
+                  {DEVICES.map((d) => (
+                    <p key={d.id}>
+                      • <strong>{d.label}:</strong> {d.massKg.toFixed(2).replace(".", ",")} kg
+                    </p>
+                  ))}
                 </div>
               </div>
 
