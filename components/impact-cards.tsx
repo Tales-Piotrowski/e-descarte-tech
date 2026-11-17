@@ -23,15 +23,15 @@ const IMPACT_TOPICS: ImpactTopic[] = [
     subtitle: "A Problemática da Obsolescência",
     iconUrl: "https://img.icons8.com/color/96/process.png",
     imagePath: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/secao1.png`,
-    source: "Fonte: Global E-waste Monitor (UNITAR, 2024) & Abrelpe",
+    source: "Fonte: Global E-waste Monitor (UNITAR, 2024) & Abrelpe (2021)",
     sections: [
       {
-        heading: "O Brasil no Liderança da América Latina",
+        heading: "O Brasil na Liderança da América Latina",
         text: "De acordo com os relatórios do Global E-waste Monitor elaborados pela UNITAR, o Brasil gera mais de 2,4 milhões de toneladas de lixo eletrônico por ano. Esse montante impressionante consolida o país como o maior gerador absoluto de resíduos eletroeletrônicos (REEE) de toda a América Latina, exigindo políticas públicas urgentes e engajamento da sociedade.",
       },
       {
         heading: "A Cultura do 'Estoque Doméstico'",
-        text: "Uma parcela expressiva dos eletrônicos substituídos no Brasil não chega aos centros de reciclagem devido ao hábito do 'estoque doméstico'. Consumidores frequentemente guardam celulares, cabos, notebooks e pequenos aparelhos quebrados ou obsoletos no fundo de gavetas e armários por anos, blocking o retorno de matérias-primas valiosas para a indústria.",
+        text: "Uma parcela expressiva dos eletrônicos substituídos no Brasil não chega aos centros de reciclagem devido ao hábito do 'estoque doméstico'. Consumidores frequentemente guardam celulares, cabos, notebooks e pequenos aparelhos quebrados ou obsoletos no fundo de gavetas e armários por anos, bloqueando o retorno de matérias-primas valiosas para a indústria.",
       },
       {
         heading: "A Realidade da Reciclagem Oficial no País",
@@ -53,11 +53,11 @@ const IMPACT_TOPICS: ImpactTopic[] = [
     subtitle: "A Toxicidade Escondida nos Circuitos",
     emojiIcon: "☣️",
     imagePath: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/secao2.png`,
-    source: "Fonte: Detering et al. (2021) & Alabi et al. (2021)",
+    source: "Fonte: Kiddee, Naidu e Wong (2013) & Alabi et al. (2021)",
     sections: [
       {
         heading: "O Processo de Lixiviação em Aterros e Lixões",
-        text: "Quando um equipamento eletrônico é lançado inadequada em aterros sanitários ou lixões a céu aberto, ele fica exposto à ação contínua das intempéries. Sob sol e chuva intensa, ocorre o fenômeno da lixiviação: a água da chuva dissolve os componentes tóxicos dos circuitos, fazendo com que esses químicos penetrem no solo e atinjam os aquifers e lençóis freáticos.",
+        text: "Quando um equipamento eletrônico é lançado de forma inadequada em aterros sanitários ou lixões a céu aberto, ele fica exposto à ação contínua das intempéries. Sob sol e chuva intensa, ocorre o fenômeno da lixiviação: a água da chuva dissolve os componentes tóxicos dos circuitos, fazendo com que esses químicos penetrem no solo e atinjam os aquíferos e lençóis freáticos.",
       },
       {
         heading: "O Fenômeno da Bioacumulação na Natureza",
@@ -84,7 +84,7 @@ const IMPACT_TOPICS: ImpactTopic[] = [
     emojiIcon: "⛏️",
     iconUrl: "https://img.icons8.com/color/96/mobile-mining.png",
     imagePath: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/secao3.png`,
-    source: "Fonte: Journal of Cleaner Production (Xavier et al., 2019)",
+    source: "Fonte: Xavier et al. (2021) & Agência Gov (2026)",
     sections: [
       {
         heading: "Conceito e Significado da Mineração Urbana",
@@ -174,7 +174,7 @@ const IMPACT_TOPICS: ImpactTopic[] = [
     subtitle: "Hábitos Sustentáveis no Dia a Dia",
     iconUrl: "https://img.icons8.com/color/96/idea.png",
     imagePath: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/secao6.png`,
-    source: "Fonte: Recicla Sampa & Guias de TI Verde",
+    source: "Fonte: Recicla Sampa (2026) & Lunardi, Frio e Brum (2011)",
     sections: [
       {
         heading: "Manutenção Preventiva e Reparos Simples",

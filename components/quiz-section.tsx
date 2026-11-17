@@ -98,7 +98,7 @@ const QUESTIONS_BANK: Question[] = [
     ],
     correctIndex: 1,
     explanation: "A água da chuva dissolve substâncias tóxicas dos circuitos (lixiviação), contaminando solos e rios.",
-    source: "Fonte: Detering et al. (2021)",
+    source: "Fonte: Kiddee, Naidu e Wong (2013)",
   },
   {
     id: 7,
@@ -112,7 +112,7 @@ const QUESTIONS_BANK: Question[] = [
     ],
     correctIndex: 1,
     explanation: "Metais pesados tóxicos passam da água e plantas para os animais e chegam acumulados ao ser humano.",
-    source: "Fonte: Detering et al. (2021)",
+    source: "Fonte: Kiddee, Naidu e Wong (2013); Alabi et al. (2021)",
   },
   {
     id: 8,
@@ -154,7 +154,7 @@ const QUESTIONS_BANK: Question[] = [
     ],
     correctIndex: 1,
     explanation: "Sua composição físico-química contém elementos químicos tóxicos persistentes na natureza.",
-    source: "Fonte: Detering et al. (2021)",
+    source: "Fonte: Kiddee, Naidu e Wong (2013)",
   },
 
   // --- SEÇÃO 3: MINERAÇÃO URBANA E ECONOMIA CIRCULAR (5 PERGUNTAS) ---
@@ -170,7 +170,7 @@ const QUESTIONS_BANK: Question[] = [
     ],
     correctIndex: 1,
     explanation: "Mineração Urbana é a extração de metais nobres existentes no lixo eletrônico já descartado.",
-    source: "Fonte: Xavier et al. (2019)",
+    source: "Fonte: Xavier et al. (2021)",
   },
   {
     id: 12,
@@ -184,7 +184,7 @@ const QUESTIONS_BANK: Question[] = [
     ],
     correctIndex: 0,
     explanation: "Reciclar metais já processados exige significativamente menos energia do que extraí-los do solo.",
-    source: "Fonte: Xavier et al. (2019)",
+    source: "Fonte: Xavier et al. (2021); Cui e Forssberg (2003)",
   },
   {
     id: 13,
@@ -198,7 +198,7 @@ const QUESTIONS_BANK: Question[] = [
     ],
     correctIndex: 1,
     explanation: "Placas de circuito contêm frações de ouro, prata e cobre de alta pureza.",
-    source: "Fonte: Xavier et al. (2019)",
+    source: "Fonte: Xavier et al. (2021); Agência Gov (2026)",
   },
   {
     id: 14,
@@ -370,7 +370,7 @@ const QUESTIONS_BANK: Question[] = [
     ],
     correctIndex: 1,
     explanation: "Cuidados de uso e conservação evitam a queima prematura de componentes eletrônicos.",
-    source: "Fonte: TI Verde / Lunardi et al. (2011)",
+    source: "Fonte: Lunardi, Frio e Brum (2011)",
   },
 ];
 
